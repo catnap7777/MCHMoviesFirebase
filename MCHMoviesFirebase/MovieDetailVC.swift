@@ -158,11 +158,19 @@ class MovieDetailVC: UIViewController {
         
         //.. this should work because IMDB number is unique
         //ref.child("kamtest1/imdb").observeSingleEvent(of: .value) { (snapshot) in
-        ref.child("\(movieIMDB)/name").observeSingleEvent(of: .value) { (snapshot) in
+        ref.child("\(movieIMDB)/comments").observeSingleEvent(of: .value) { (snapshot) in
             
-            if let mymoviename = snapshot.value as? String {
-                print("**** mymoviename searched = \(mymoviename)")
-                if mymoviename == self.movieTitle {
+            //.. since searching for a particular imdb number/comments, I can pull back
+            //..   comments from fb to see if they changed from what user typed on
+            //..   the screen.  If comments are not equal, I proceed with addNewMovie()
+            //..   eventhough it's really an update
+            if let sComments = snapshot.value as? String {
+                
+                let kamComments = self.commentsText.text
+                
+                print("**** sComments | kamComments to comapare = \(sComments) | \(kamComments)")
+
+                if sComments == kamComments {
                     self.alreadyExists()
                 } else {
                     self.addNewMovie()
