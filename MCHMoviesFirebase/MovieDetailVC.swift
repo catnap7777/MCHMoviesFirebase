@@ -190,7 +190,7 @@ class MovieDetailVC: UIViewController {
       
 
     func alreadyExists() {
-        let alert2 = UIAlertController(title: "Message", message: "Movie Already Exists in My Movies", preferredStyle: .alert)
+        let alert2 = UIAlertController(title: "Message", message: "Movie Already Exists in My Movies or No Change to 'My Comments'", preferredStyle: .alert)
         //.. from https://stackoverflow.com/questions/27895886/uialertcontroller-change-font-color
         //.. make text in alert message red
         //alert2.view.tintColor = UIColor.red
@@ -219,7 +219,7 @@ class MovieDetailVC: UIViewController {
             //listArray.append(newEntity)
 
             //.. if it saved, show an alert
-            let alert3 = UIAlertController(title: "Message", message: "Movie Saved to My Movies :)", preferredStyle: .alert)
+            let alert3 = UIAlertController(title: "Message", message: "Movie Saved/Updated to My Movies :)", preferredStyle: .alert)
             let okAction3 = UIAlertAction(title: "OK", style: .default, handler: { action -> Void in
                 //Just dismiss the action sheet
             })
