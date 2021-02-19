@@ -3,27 +3,67 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3A90E85F25DF46A8006E2E33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A90E85E25DF46A8006E2E33 /* AppDelegate.swift */; };
 		3A90E86125DF46A8006E2E33 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A90E86025DF46A8006E2E33 /* SceneDelegate.swift */; };
-		3A90E86325DF46A8006E2E33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A90E86225DF46A8006E2E33 /* ViewController.swift */; };
 		3A90E86625DF46A8006E2E33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A90E86425DF46A8006E2E33 /* Main.storyboard */; };
 		3A90E86825DF46A9006E2E33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A90E86725DF46A9006E2E33 /* Assets.xcassets */; };
 		3A90E86B25DF46A9006E2E33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A90E86925DF46A9006E2E33 /* LaunchScreen.storyboard */; };
+		3A90E87325DF47C0006E2E33 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A90E87225DF47C0006E2E33 /* GoogleService-Info.plist */; };
+		3A90E87D25DF48D3006E2E33 /* hp.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A90E87425DF48D2006E2E33 /* hp.png */; };
+		3A90E87E25DF48D3006E2E33 /* popcornpic1sm2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A90E87525DF48D2006E2E33 /* popcornpic1sm2.png */; };
+		3A90E87F25DF48D3006E2E33 /* gitcat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A90E87625DF48D2006E2E33 /* gitcat.jpg */; };
+		3A90E88025DF48D3006E2E33 /* popcorn2_wo_middle3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A90E87725DF48D2006E2E33 /* popcorn2_wo_middle3.jpg */; };
+		3A90E88125DF48D3006E2E33 /* popcorn2_wo_middle5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A90E87825DF48D2006E2E33 /* popcorn2_wo_middle5.jpg */; };
+		3A90E88225DF48D3006E2E33 /* posternotfound.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 3A90E87925DF48D2006E2E33 /* posternotfound.JPG */; };
+		3A90E88325DF48D3006E2E33 /* pearl.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A90E87A25DF48D2006E2E33 /* pearl.jpg */; };
+		3A90E88425DF48D3006E2E33 /* tygermatrix303.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A90E87B25DF48D2006E2E33 /* tygermatrix303.png */; };
+		3A90E88525DF48D3006E2E33 /* posternf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A90E87C25DF48D3006E2E33 /* posternf.jpg */; };
+		3A90E88725DF4925006E2E33 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A90E88625DF4925006E2E33 /* HomeVC.swift */; };
+		3A90E88925DF4949006E2E33 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A90E88825DF4949006E2E33 /* SearchVC.swift */; };
+		3A90E88B25DF4966006E2E33 /* MovieListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A90E88A25DF4966006E2E33 /* MovieListVC.swift */; };
+		3A90E88D25DF499B006E2E33 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A90E88C25DF499B006E2E33 /* TableViewCell.swift */; };
+		3A90E89125DF49E9006E2E33 /* MovieDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A90E89025DF49E9006E2E33 /* MovieDetailVC.swift */; };
+		3A90E89325DF4A28006E2E33 /* OpenImdbVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A90E89225DF4A28006E2E33 /* OpenImdbVC.swift */; };
+		3A90E89525DF4A52006E2E33 /* MyMoviesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A90E89425DF4A52006E2E33 /* MyMoviesListVC.swift */; };
+		3A90E89725DF4A7C006E2E33 /* MyMoviesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A90E89625DF4A7C006E2E33 /* MyMoviesTableViewCell.swift */; };
+		3A90E89925DF4AA9006E2E33 /* MyMoviesDeleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A90E89825DF4AA9006E2E33 /* MyMoviesDeleteVC.swift */; };
+		47C8C87793D3C636D3E592FB /* Pods_MCHMoviesFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F283485506EDC58504FEE4 /* Pods_MCHMoviesFirebase.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14F283485506EDC58504FEE4 /* Pods_MCHMoviesFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCHMoviesFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A90E85B25DF46A8006E2E33 /* MCHMoviesFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCHMoviesFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A90E85E25DF46A8006E2E33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A90E86025DF46A8006E2E33 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3A90E86225DF46A8006E2E33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3A90E86525DF46A8006E2E33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A90E86725DF46A9006E2E33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A90E86A25DF46A9006E2E33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A90E86C25DF46A9006E2E33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A90E87225DF47C0006E2E33 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		3A90E87425DF48D2006E2E33 /* hp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp.png; sourceTree = SOURCE_ROOT; };
+		3A90E87525DF48D2006E2E33 /* popcornpic1sm2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popcornpic1sm2.png; sourceTree = SOURCE_ROOT; };
+		3A90E87625DF48D2006E2E33 /* gitcat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gitcat.jpg; sourceTree = SOURCE_ROOT; };
+		3A90E87725DF48D2006E2E33 /* popcorn2_wo_middle3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = popcorn2_wo_middle3.jpg; sourceTree = SOURCE_ROOT; };
+		3A90E87825DF48D2006E2E33 /* popcorn2_wo_middle5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = popcorn2_wo_middle5.jpg; sourceTree = SOURCE_ROOT; };
+		3A90E87925DF48D2006E2E33 /* posternotfound.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = posternotfound.JPG; sourceTree = SOURCE_ROOT; };
+		3A90E87A25DF48D2006E2E33 /* pearl.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pearl.jpg; sourceTree = SOURCE_ROOT; };
+		3A90E87B25DF48D2006E2E33 /* tygermatrix303.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tygermatrix303.png; sourceTree = SOURCE_ROOT; };
+		3A90E87C25DF48D3006E2E33 /* posternf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = posternf.jpg; sourceTree = SOURCE_ROOT; };
+		3A90E88625DF4925006E2E33 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		3A90E88825DF4949006E2E33 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		3A90E88A25DF4966006E2E33 /* MovieListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListVC.swift; sourceTree = "<group>"; };
+		3A90E88C25DF499B006E2E33 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		3A90E89025DF49E9006E2E33 /* MovieDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailVC.swift; sourceTree = "<group>"; };
+		3A90E89225DF4A28006E2E33 /* OpenImdbVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenImdbVC.swift; sourceTree = "<group>"; };
+		3A90E89425DF4A52006E2E33 /* MyMoviesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMoviesListVC.swift; sourceTree = "<group>"; };
+		3A90E89625DF4A7C006E2E33 /* MyMoviesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMoviesTableViewCell.swift; sourceTree = "<group>"; };
+		3A90E89825DF4AA9006E2E33 /* MyMoviesDeleteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMoviesDeleteVC.swift; sourceTree = "<group>"; };
+		A92AF8AA423121F852BD3060 /* Pods-MCHMoviesFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCHMoviesFirebase.release.xcconfig"; path = "Target Support Files/Pods-MCHMoviesFirebase/Pods-MCHMoviesFirebase.release.xcconfig"; sourceTree = "<group>"; };
+		B1450FD4375775B0D3903678 /* Pods-MCHMoviesFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCHMoviesFirebase.debug.xcconfig"; path = "Target Support Files/Pods-MCHMoviesFirebase/Pods-MCHMoviesFirebase.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47C8C87793D3C636D3E592FB /* Pods_MCHMoviesFirebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +83,8 @@
 			children = (
 				3A90E85D25DF46A8006E2E33 /* MCHMoviesFirebase */,
 				3A90E85C25DF46A8006E2E33 /* Products */,
+				CB72B7D7BF976C566EFCB1B8 /* Pods */,
+				6A4B38AF74AD587D48EB1EED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +101,48 @@
 			children = (
 				3A90E85E25DF46A8006E2E33 /* AppDelegate.swift */,
 				3A90E86025DF46A8006E2E33 /* SceneDelegate.swift */,
-				3A90E86225DF46A8006E2E33 /* ViewController.swift */,
+				3A90E88625DF4925006E2E33 /* HomeVC.swift */,
+				3A90E88825DF4949006E2E33 /* SearchVC.swift */,
+				3A90E88A25DF4966006E2E33 /* MovieListVC.swift */,
+				3A90E88C25DF499B006E2E33 /* TableViewCell.swift */,
+				3A90E89025DF49E9006E2E33 /* MovieDetailVC.swift */,
+				3A90E89225DF4A28006E2E33 /* OpenImdbVC.swift */,
+				3A90E89425DF4A52006E2E33 /* MyMoviesListVC.swift */,
+				3A90E89625DF4A7C006E2E33 /* MyMoviesTableViewCell.swift */,
+				3A90E89825DF4AA9006E2E33 /* MyMoviesDeleteVC.swift */,
 				3A90E86425DF46A8006E2E33 /* Main.storyboard */,
 				3A90E86725DF46A9006E2E33 /* Assets.xcassets */,
 				3A90E86925DF46A9006E2E33 /* LaunchScreen.storyboard */,
 				3A90E86C25DF46A9006E2E33 /* Info.plist */,
+				3A90E87225DF47C0006E2E33 /* GoogleService-Info.plist */,
+				3A90E87625DF48D2006E2E33 /* gitcat.jpg */,
+				3A90E87425DF48D2006E2E33 /* hp.png */,
+				3A90E87A25DF48D2006E2E33 /* pearl.jpg */,
+				3A90E87725DF48D2006E2E33 /* popcorn2_wo_middle3.jpg */,
+				3A90E87825DF48D2006E2E33 /* popcorn2_wo_middle5.jpg */,
+				3A90E87525DF48D2006E2E33 /* popcornpic1sm2.png */,
+				3A90E87C25DF48D3006E2E33 /* posternf.jpg */,
+				3A90E87925DF48D2006E2E33 /* posternotfound.JPG */,
+				3A90E87B25DF48D2006E2E33 /* tygermatrix303.png */,
 			);
 			path = MCHMoviesFirebase;
+			sourceTree = "<group>";
+		};
+		6A4B38AF74AD587D48EB1EED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				14F283485506EDC58504FEE4 /* Pods_MCHMoviesFirebase.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CB72B7D7BF976C566EFCB1B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B1450FD4375775B0D3903678 /* Pods-MCHMoviesFirebase.debug.xcconfig */,
+				A92AF8AA423121F852BD3060 /* Pods-MCHMoviesFirebase.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +152,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A90E86F25DF46A9006E2E33 /* Build configuration list for PBXNativeTarget "MCHMoviesFirebase" */;
 			buildPhases = (
+				7E5D3BA22561E28ADF0C2E09 /* [CP] Check Pods Manifest.lock */,
 				3A90E85725DF46A8006E2E33 /* Sources */,
 				3A90E85825DF46A8006E2E33 /* Frameworks */,
 				3A90E85925DF46A8006E2E33 /* Resources */,
+				22721F328F0511D542CB6B46 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,22 +205,82 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A90E88325DF48D3006E2E33 /* pearl.jpg in Resources */,
+				3A90E87D25DF48D3006E2E33 /* hp.png in Resources */,
 				3A90E86B25DF46A9006E2E33 /* LaunchScreen.storyboard in Resources */,
+				3A90E87325DF47C0006E2E33 /* GoogleService-Info.plist in Resources */,
+				3A90E87E25DF48D3006E2E33 /* popcornpic1sm2.png in Resources */,
 				3A90E86825DF46A9006E2E33 /* Assets.xcassets in Resources */,
+				3A90E88225DF48D3006E2E33 /* posternotfound.JPG in Resources */,
+				3A90E88425DF48D3006E2E33 /* tygermatrix303.png in Resources */,
+				3A90E87F25DF48D3006E2E33 /* gitcat.jpg in Resources */,
+				3A90E88525DF48D3006E2E33 /* posternf.jpg in Resources */,
+				3A90E88125DF48D3006E2E33 /* popcorn2_wo_middle5.jpg in Resources */,
 				3A90E86625DF46A8006E2E33 /* Main.storyboard in Resources */,
+				3A90E88025DF48D3006E2E33 /* popcorn2_wo_middle3.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		22721F328F0511D542CB6B46 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MCHMoviesFirebase/Pods-MCHMoviesFirebase-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MCHMoviesFirebase/Pods-MCHMoviesFirebase-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MCHMoviesFirebase/Pods-MCHMoviesFirebase-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E5D3BA22561E28ADF0C2E09 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MCHMoviesFirebase-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3A90E85725DF46A8006E2E33 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A90E86325DF46A8006E2E33 /* ViewController.swift in Sources */,
+				3A90E88925DF4949006E2E33 /* SearchVC.swift in Sources */,
+				3A90E89925DF4AA9006E2E33 /* MyMoviesDeleteVC.swift in Sources */,
+				3A90E89725DF4A7C006E2E33 /* MyMoviesTableViewCell.swift in Sources */,
+				3A90E89125DF49E9006E2E33 /* MovieDetailVC.swift in Sources */,
+				3A90E88725DF4925006E2E33 /* HomeVC.swift in Sources */,
 				3A90E85F25DF46A8006E2E33 /* AppDelegate.swift in Sources */,
 				3A90E86125DF46A8006E2E33 /* SceneDelegate.swift in Sources */,
+				3A90E88D25DF499B006E2E33 /* TableViewCell.swift in Sources */,
+				3A90E89525DF4A52006E2E33 /* MyMoviesListVC.swift in Sources */,
+				3A90E88B25DF4966006E2E33 /* MovieListVC.swift in Sources */,
+				3A90E89325DF4A28006E2E33 /* OpenImdbVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +422,7 @@
 		};
 		3A90E87025DF46A9006E2E33 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1450FD4375775B0D3903678 /* Pods-MCHMoviesFirebase.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +441,7 @@
 		};
 		3A90E87125DF46A9006E2E33 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A92AF8AA423121F852BD3060 /* Pods-MCHMoviesFirebase.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
