@@ -9,16 +9,18 @@
 
 import UIKit
 import Foundation
-import CoreData
+//import CoreData
 
 //.. For displaying the list of my movies that I have saved..
 class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var myMoviesTableViewObj: UITableView!
     
-    var dataManager : NSManagedObjectContext!
-    //.. array to hold the database info for loading/saving
-    var listArray = [NSManagedObject]()
+//    var dataManager : NSManagedObjectContext!
+//    //.. array to hold the database info for loading/saving
+//    var listArray = [NSManagedObject]()
+    var listArray2: [String] = ["karen","tom","erik"]
+    var listArray = [(name: "karen", year: "2021", type: "movie", comments: "yup", poster: "poster", imdb: "imdb")]
     
     let defaultImageArray = ["posternf.png","pearl.jpg","gitcat.jpg"]
    
@@ -36,8 +38,10 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         myMoviesTableViewObj.dataSource = self
         myMoviesTableViewObj.delegate = self
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        dataManager = appDelegate.persistentContainer.viewContext
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        dataManager = appDelegate.persistentContainer.viewContext
+        
+        listArray.append((name: "elsa", year: "2020", type: "game", comments: "nope", poster: "poster2", imdb: "imdb2"))
         
         fetchData()
         
@@ -65,14 +69,21 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
 
         let mmRow = listArray[indexPath.row]
         
-        cell.myMovieName?.text = (mmRow.value(forKey: "name") as! String)
-        cell.myMovieYear?.text = (mmRow.value(forKey: "year") as! String)
-        cell.myMovieType?.text = (mmRow.value(forKey: "type") as! String)
-        cell.myMovieComments?.text = (mmRow.value(forKey: "comments") as! String)
+        cell.myMovieName?.text = (mmRow.name)
+        cell.myMovieYear?.text = (mmRow.year)
+        cell.myMovieType?.text = (mmRow.type)
+        cell.myMovieComments?.text = (mmRow.comments)
         
-        print("****************** myMovieComments = \(mmRow.value(forKey: "comments") as! String)")
+//        cell.myMovieName?.text = (mmRow.value(forKey: "name") as! String)
+//        cell.myMovieYear?.text = (mmRow.value(forKey: "year") as! String)
+//        cell.myMovieType?.text = (mmRow.value(forKey: "type") as! String)
+//        cell.myMovieComments?.text = (mmRow.value(forKey: "comments") as! String)
         
-        let url = mmRow.value(forKey: "poster") as! String
+//        print("****************** myMovieComments = \(mmRow.value(forKey: "comments") as! String)")
+        print("****************** myMovieComments = \(mmRow.comments)")
+        
+//        let url = mmRow.value(forKey: "poster") as! String
+        let url = mmRow.poster
         var myImage = UIImage(named: defaultImageArray[0])
         
         if url == "" {
@@ -105,9 +116,13 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         
         let mmRowSelected = listArray[indexPath.row]
         
-        let movieNameSelected = mmRowSelected.value(forKey: "name") as! String
-        let movieCommentsSelected = mmRowSelected.value(forKey: "comments") as! String
-        let movieIMDBSelect = mmRowSelected.value(forKey: "imdb") as! String
+//        let movieNameSelected = mmRowSelected.value(forKey: "name") as! String
+//        let movieCommentsSelected = mmRowSelected.value(forKey: "comments") as! String
+//        let movieIMDBSelect = mmRowSelected.value(forKey: "imdb") as! String
+        
+        let movieNameSelected = mmRowSelected.name
+        let movieCommentsSelected = mmRowSelected.comments
+        let movieIMDBSelect = mmRowSelected.imdb
         
         let alert = UIAlertController(title: "Your Choice", message: "\(movieNameSelected)", preferredStyle: .alert)
 
@@ -134,24 +149,29 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         let savedText2: NSString = savedText as NSString
 
         //.. try to update the listArray and then save it
-        self.listArray[indexPath.row].setValue(savedText2, forKey: "comments")
+//        self.listArray[indexPath.row].setValue(savedText2, forKey: "comments")
+        
         //.. next line does the same thing as above
         //mmRowSelected.setValue(savedText2, forKey: "comments")
         
         //.. Now save the "new row" with the new comments --- it would be better to just update it
-        do{
-            //.. try to save in db
-            try self.dataManager.save()
-            //self.fetchData()
-            self.myMoviesTableViewObj.reloadData()
-        } catch{
-            print ("Error saving updated data")
-            print("$$$ MovieDetailVC ..tried to save coreData but it didn't work")
-        }
+//        do{
+//            //.. try to save in db
+//            try self.dataManager.save()
+//            //self.fetchData()
+//            self.myMoviesTableViewObj.reloadData()
+//        } catch{
+//            print ("Error saving updated data")
+//            print("$$$ MovieDetailVC ..tried to save coreData but it didn't work")
+//        }
                 
-        print("$$$$$$ updatedRow name = \(String(describing: self.listArray[indexPath.row].value(forKey: "name")))")
-        print("$$$$$$ updatedRow imdb = \(String(describing: self.listArray[indexPath.row].value(forKey: "imdb")))")
-        print("$$$$$$ updatedRow comments = \(String(describing: self.listArray[indexPath.row].value(forKey: "comments")))")
+//        print("$$$$$$ updatedRow name = \(String(describing: self.listArray[indexPath.row].value(forKey: "name")))")
+//        print("$$$$$$ updatedRow imdb = \(String(describing: self.listArray[indexPath.row].value(forKey: "imdb")))")
+//        print("$$$$$$ updatedRow comments = \(String(describing: self.listArray[indexPath.row].value(forKey: "comments")))")
+        
+        print("$$$$$$ updatedRow name = \(String(describing: self.listArray[indexPath.row].name)))")
+       print("$$$$$$ updatedRow imdb = \(String(describing: self.listArray[indexPath.row].imdb)))")
+       print("$$$$$$ updatedRow comments = \(String(describing: self.listArray[indexPath.row].comments)))")
         
        })
 
@@ -169,13 +189,13 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
          
             let movieToRemove = self.listArray[indexPath.row]
             
-            self.dataManager.delete(movieToRemove)
+//            self.dataManager.delete(movieToRemove)
             
-            do {
-                try self.dataManager.save()
-            } catch {
-                print("...was not able to swipe/delete row - \(movieToRemove)")
-            }
+//            do {
+//                try self.dataManager.save()
+//            } catch {
+//                print("...was not able to swipe/delete row - \(movieToRemove)")
+//            }
             
             self.fetchData()
             self.myMoviesTableViewObj.reloadData()
@@ -196,30 +216,30 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
 //        do {
         
         //.. setup fetch from "Item" in xcdatamodeld
-        let fetchRequest : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "MyMovieTable")
-        
-        //.. do this if you're trying to sort it when it's coming back as part of the fetch request..
-        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        do {
-            //.. try to fetch data
-            let result = try dataManager.fetch(fetchRequest)
-            //.. set the array equal to the results fetched
-            listArray = result as! [NSManagedObject]
-            
-            //.. just display what's in the db right now... not really needed... but helps for debugging
-            if !listArray.isEmpty {
-                //.. for each item in the array, do the following..
-                for item in listArray {
-                    let myMovieNameRetrieved = item.value(forKey: "name") as! String
-                    print("====> myMovieNameRetrieved in listArray/CoreData: \(myMovieNameRetrieved)")
-                }
-            }
-        } catch {
-            print ("Error retrieving data")
-        }
-        
+//        let fetchRequest : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "MyMovieTable")
+//
+//        //.. do this if you're trying to sort it when it's coming back as part of the fetch request..
+//        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+//        fetchRequest.sortDescriptors = [sortDescriptor]
+//
+//        do {
+//            //.. try to fetch data
+//            let result = try dataManager.fetch(fetchRequest)
+//            //.. set the array equal to the results fetched
+//            listArray = result as! [NSManagedObject]
+//
+//            //.. just display what's in the db right now... not really needed... but helps for debugging
+//            if !listArray.isEmpty {
+//                //.. for each item in the array, do the following..
+//                for item in listArray {
+//                    let myMovieNameRetrieved = item.value(forKey: "name") as! String
+//                    print("====> myMovieNameRetrieved in listArray/CoreData: \(myMovieNameRetrieved)")
+//                }
+//            }
+//        } catch {
+//            print ("Error retrieving data")
+//        }
+//
     }
 
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nlT-CX-1fS">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -10,7 +10,7 @@
         <!--My Movies-->
         <scene sceneID="3Bc-1B-aV1">
             <objects>
-                <viewController id="zro-Jy-W5P" customClass="MyMovieListVC" customModule="MAD157MCHMoviesProjCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zro-Jy-W5P" customClass="MyMovieListVC" customModule="MCHMoviesFirebase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wde-oO-i4N">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,7 +29,7 @@
                                 <rect key="frame" x="36" y="136.5" width="342" height="619.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="customCell2" rowHeight="205" id="jqH-DW-kse" customClass="MyMoviesTableViewCell" customModule="MAD157MCHMoviesProjCoreData" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="customCell2" rowHeight="205" id="jqH-DW-kse" customClass="MyMoviesTableViewCell" customModule="MCHMoviesFirebase" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="342" height="205"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jqH-DW-kse" id="79S-9T-b2A">
@@ -152,7 +152,7 @@
         <!--HomeVC-->
         <scene sceneID="C0r-8q-v6O">
             <objects>
-                <viewController id="ahU-Px-AzC" customClass="HomeVC" customModule="MAD157MCHMoviesProjCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ahU-Px-AzC" customClass="HomeVC" customModule="MCHMoviesFirebase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9vO-XJ-aeG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -230,7 +230,7 @@
         <!--Delete-->
         <scene sceneID="7z3-yk-ABm">
             <objects>
-                <viewController id="lgU-9w-jTE" customClass="MyMovieDeleteVC" customModule="MAD157MCHMoviesProjCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lgU-9w-jTE" customClass="MyMovieDeleteVC" customModule="MCHMoviesFirebase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hS5-rf-54t">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -382,7 +382,7 @@
         <!--Search-->
         <scene sceneID="3P2-CK-fS8">
             <objects>
-                <viewController id="i3D-hm-BMz" customClass="SearchVC" customModule="MAD157MCHMoviesProjCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="i3D-hm-BMz" customClass="SearchVC" customModule="MCHMoviesFirebase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9SI-La-bNu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -453,7 +453,7 @@
         <!--Search Results-->
         <scene sceneID="sEg-5E-aFw">
             <objects>
-                <viewController id="XRl-1Z-SCk" customClass="MovieListVC" customModule="MAD157MCHMoviesProjCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XRl-1Z-SCk" customClass="MovieListVC" customModule="MCHMoviesFirebase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j74-OF-SCo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -479,7 +479,7 @@
                                     <constraint firstAttribute="height" constant="631" id="hVW-98-0FZ"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="customCell" rowHeight="129" id="LNh-jx-Q0T" customClass="TableViewCell" customModule="MAD157MCHMoviesProjCoreData" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="customCell" rowHeight="129" id="LNh-jx-Q0T" customClass="TableViewCell" customModule="MCHMoviesFirebase" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="129"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LNh-jx-Q0T" id="EMo-ad-fvo">
@@ -595,7 +595,7 @@
         <!--Movie Details -->
         <scene sceneID="Kt1-1W-UFw">
             <objects>
-                <viewController id="YXL-id-93G" customClass="MovieDetailVC" customModule="MAD157MCHMoviesProjCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YXL-id-93G" customClass="MovieDetailVC" customModule="MCHMoviesFirebase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OSp-ug-a4S">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
