@@ -6,6 +6,8 @@
 //  Copyright © 2021 TygerMatrix Software. All rights reserved.
 //
 
+import UIKit
+
 //.. Custom cell that's used for the list of movies that come back from the API search
 class TableViewCell: UITableViewCell {
 

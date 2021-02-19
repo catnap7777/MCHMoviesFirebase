@@ -9,7 +9,7 @@
 
 import UIKit
 
-class OpenImdbVCViewController: UIViewController {
+class OpenImdbVC: UIViewController {
 
     @IBOutlet var ImdbButtonObj: UIButton!
     

@@ -321,7 +321,7 @@
         <!--IMDB-->
         <scene sceneID="Vp5-YC-7eD">
             <objects>
-                <viewController id="y2Q-RR-SVh" customClass="OpenImdbVCViewController" customModule="MAD157MCHMoviesProjCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="y2Q-RR-SVh" customClass="OpenImdbVC" customModule="MCHMoviesFirebase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="73b-3N-BaI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
