@@ -7,6 +7,7 @@
 //
 import UIKit
 import Foundation
+import FirebaseDatabase
 //import CoreData
 
 //.. Detail movie info for one of the movies that was "selected" (clicked on)
@@ -23,6 +24,12 @@ class MovieDetailVC: UIViewController {
 //    var dataManager : NSManagedObjectContext!
 //    //.. array to hold the database info for loading/saving
 //    var listArray = [NSManagedObject]()
+    
+    let ref = Database.database().reference()
+    
+    //.. from json search
+//    var movieArrayTup: [(xName: String, xYear: String, xType: String, xIMDB: String, xPoster: String)] = [("","","","","")]
+    var listArray: [(xName: String, xYear: String, xType: String, xIMDB: String, xPoster: String)] = [("","","","","")]
     
     var movieTitle = ""
     var movieYear = ""
@@ -126,8 +133,61 @@ class MovieDetailVC: UIViewController {
     
     @IBAction func saveMyMovieButtonPressed(_ sender: Any) {
         
-//        listArray.removeAll()
+        listArray.removeAll()
 //        fetchData()
+        
+        //..........................................................................
+        //.. firebase database structure for this example is..
+        //  - someid (or at this level can be randomly auto-generated key - see below)
+        //      |_ age:39
+        //      |_ name: Tori
+        //      |_ role: Admin
+        //
+//     //.. to read one key/value pair
+//        ref.child("someid/name").observeSingleEvent(of: .value)
+//        { (snapshot) in
+//            let name = snapshot.value as? String
+//            print("*** name = \(name)")
+//        }
+//
+//        //.. to read multiple key/value pairs - use dictionary to hold data
+//        ref.child("someid").observeSingleEvent(of: .value)
+//        { (snapshot) in
+//            let data = snapshot.value as? [String: Any]
+//            print("*** data = \(data)")
+//        }
+        
+        
+        ref.child("kamtest1/imdb").observeSingleEvent(of: .value) { (snapshot) in
+        
+//            let kamtestname = snapshot.value as? String
+//            print("**** kamtestname searched = \(kamtestname)")
+//            if kamtestname != nil {
+//                self.alreadyExists()
+//            } else {
+//                self.addNewMovie()
+//            }
+            
+            if let mymovieimdb = snapshot.value as? String {
+                print("**** mymovieimdb searched = \(mymovieimdb)")
+                self.alreadyExists()
+            } else {
+                self.addNewMovie()
+            }
+            
+//            if snapshot.value(forKey: "name") == nil {
+//                self.notFound()
+//            }
+            
+//            if found {
+//                movie already in db func
+//            } else {
+//                add movie func
+//            }
+            
+            
+            
+        }
         
         movieComments = commentsText.text
         print("12391840750375 in saveMyMovieButtonPressed")
@@ -254,4 +314,49 @@ class MovieDetailVC: UIViewController {
 //
 //
 }
+    func alreadyExists() {
+        let alert2 = UIAlertController(title: "Message", message: "Movie Already Exists in My Movies", preferredStyle: .alert)
+        //.. from https://stackoverflow.com/questions/27895886/uialertcontroller-change-font-color
+        //.. make text in alert message red
+        //alert2.view.tintColor = UIColor.red
+        //.. tints whole box red
+        alert2.view.backgroundColor = UIColor.red
+        //.. to set the "message" in red and "title" in blue
+        alert2.setValue(NSAttributedString(string: alert2.message ?? "nope", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium), NSAttributedString.Key.foregroundColor : UIColor.red]), forKey: "attributedMessage")
+        //.. to set the "title" in blue
+        alert2.setValue(NSAttributedString(string: alert2.title ?? "nada", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.medium), NSAttributedString.Key.foregroundColor : UIColor.blue]), forKey: "attributedTitle")
+
+        //.. style: .destructive = red "OK" button; .default = black
+        let okAction2 = UIAlertAction(title: "OK", style: .default, handler: { action -> Void in
+            //Just dismiss the action sheet
+        })
+        alert2.addAction(okAction2)
+        self.present(alert2, animated: true, completion: nil )
+        print("!@*$&*%*#^%#^ movie already in db - \(movieTitle)")
+    }
+
+    func addNewMovie() {
+        
+        do{
+            //.. try to save in db
+            ref.child("kamtest1").setValue(["imdb":"5555","type":"movie","year":"2021","comments":"none","poster":"poster addr"])
+            //.. add new entity to array
+            //listArray.append(newEntity)
+
+            //.. if it saved, show an alert
+            let alert3 = UIAlertController(title: "Message", message: "Movie Saved to My Movies :)", preferredStyle: .alert)
+            let okAction3 = UIAlertAction(title: "OK", style: .default, handler: { action -> Void in
+                //Just dismiss the action sheet
+            })
+            alert3.addAction(okAction3)
+            self.present(alert3, animated: true, completion: nil )
+        } catch{
+            print ("Error saving data")
+            print("$$$ MovieDetailVC ..tried to save coreData but it didn't work")
+        }
+        
+        
+    }
+        
+    
 }

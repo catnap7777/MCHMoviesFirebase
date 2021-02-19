@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class HomeVC: UIViewController {
 
@@ -20,6 +21,14 @@ class HomeVC: UIViewController {
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
         //backgroundImage.contentMode = UIView.ContentMode.scaleToFill
         self.view.insertSubview(backgroundImage, at: 0)
+        
+        let ref = Database.database().reference()
+        
+        ref.child("test movie4").setValue(["imdb":"3333","type":"movie","year":"2021","comments":"none","poster":"poster addr"])
+       
+//        ref.child("search").setValue(["imdb":"4444","name":"testmovie3","type":"movie","year":"2021","comments":"none","poster":"poster addr"])
+        
+//        ref.childByAutoId().setValue(["imdb":"2222","name":"testmovie2","type":"movie","year":"2021","comments":"none","poster":"poster addr"])
         
         // Do any additional setup after loading the view.
     }
