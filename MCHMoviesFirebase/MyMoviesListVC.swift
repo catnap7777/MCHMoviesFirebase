@@ -10,24 +10,15 @@
 import UIKit
 import Foundation
 import FirebaseDatabase
-//import CoreData
 
 //.. For displaying the list of my movies that I have saved..
 class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var myMoviesTableViewObj: UITableView!
     
-//    var dataManager : NSManagedObjectContext!
-//    //.. array to hold the database info for loading/saving
-//    var listArray = [NSManagedObject]()
-    
-    
     let ref = Database.database().reference()
     
     var listArray: [(name: String, year: String, type: String, imdb: String, poster: String, comments: String)] = [("","","","","","")]
-    
-//    var listArray2: [String] = ["karen","tom","erik"]
-//    var listArray = [(name: "karen", year: "2021", type: "movie", comments: "yup", poster: "poster", imdb: "imdb")]
     
     let defaultImageArray = ["posternf.jpg","pearl.jpg","gitcat.jpg"]
    
@@ -44,16 +35,9 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
        
         myMoviesTableViewObj.dataSource = self
         myMoviesTableViewObj.delegate = self
-        
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        dataManager = appDelegate.persistentContainer.viewContext
-        
-//        listArray.append((name: "elsa", year: "2020", type: "game", comments: "nope", poster: "poster2", imdb: "imdb2"))
-        
-//        listArray = fetchData()
+       
         fetchData()
         print("listArray count = \(listArray.count)")
-        
         
     }
     
@@ -61,7 +45,6 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
 //        fetchData()
 //        self.myMoviesTableViewObj.reloadData()
 //    }
-    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return mymovies.count
@@ -144,33 +127,21 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
                //.. called savedText, which represents the first text field (note the index value of 0) on the alert controller. If you add more than one text field to an alert controller, you’ll need to define additional constants to represent those other text fields
 
         let savedText: String = alert.textFields![0].text ?? "nice try karen"
-        
+        print("savedText = \(savedText)")
         let savedText2: NSString = savedText as NSString
-
+        print("savedText2 = \(savedText2)")
+        
         //.. try to update the listArray and then save it
-//        self.listArray[indexPath.row].setValue(savedText2, forKey: "comments")
+        self.listArray[indexPath.row].comments = savedText
+        print("listArray comments = \(self.listArray[indexPath.row].comments)")
         
-        //.. next line does the same thing as above
-        //mmRowSelected.setValue(savedText2, forKey: "comments")
-        
-        //.. Now save the "new row" with the new comments --- it would be better to just update it
-//        do{
-//            //.. try to save in db
-//            try self.dataManager.save()
-//            //self.fetchData()
-//            self.myMoviesTableViewObj.reloadData()
-//        } catch{
-//            print ("Error saving updated data")
-//            print("$$$ MovieDetailVC ..tried to save coreData but it didn't work")
-//        }
-                
-//        print("$$$$$$ updatedRow name = \(String(describing: self.listArray[indexPath.row].value(forKey: "name")))")
-//        print("$$$$$$ updatedRow imdb = \(String(describing: self.listArray[indexPath.row].value(forKey: "imdb")))")
-//        print("$$$$$$ updatedRow comments = \(String(describing: self.listArray[indexPath.row].value(forKey: "comments")))")
+        //.. Now save the new comments
+        self.ref.child("\(movieIMDBSelect)/comments").setValue("\(savedText)")
+        self.myMoviesTableViewObj.reloadData()
         
         print("$$$$$$ updatedRow name = \(String(describing: self.listArray[indexPath.row].name)))")
-       print("$$$$$$ updatedRow imdb = \(String(describing: self.listArray[indexPath.row].imdb)))")
-       print("$$$$$$ updatedRow comments = \(String(describing: self.listArray[indexPath.row].comments)))")
+        print("$$$$$$ updatedRow imdb = \(String(describing: self.listArray[indexPath.row].imdb)))")
+        print("$$$$$$ updatedRow comments = \(String(describing: self.listArray[indexPath.row].comments)))")
         
        })
 
