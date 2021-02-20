@@ -36,15 +36,16 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         myMoviesTableViewObj.dataSource = self
         myMoviesTableViewObj.delegate = self
        
-        fetchData()
+        //..  fetchData() does NOT work here with Tab Bar Controller;
+        //..    put in viewWillAppear instead
         print("listArray count = \(listArray.count)")
         
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        fetchData()
-//        self.myMoviesTableViewObj.reloadData()
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        fetchData()
+        self.myMoviesTableViewObj.reloadData()
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return mymovies.count
@@ -157,23 +158,13 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         
         let action = UIContextualAction(style: .destructive, title: "delete") { (action, view, completionHandler) in
          
-            let movieToRemove = self.listArray[indexPath.row]
-            
-//            self.dataManager.delete(movieToRemove)
-            
-//            do {
-//                try self.dataManager.save()
-//            } catch {
-//                print("...was not able to swipe/delete row - \(movieToRemove)")
-//            }
-            
+            let imdbMovieToRemove = self.listArray[indexPath.row].imdb
+            self.ref.child(imdbMovieToRemove).removeValue()
             self.fetchData()
             self.myMoviesTableViewObj.reloadData()
-           
         }
         
         return UISwipeActionsConfiguration(actions: [action])
-        
     }
     
     //.. read from db - get all data
