@@ -8,7 +8,7 @@
 
 import UIKit
 import Foundation
-//import CoreData
+import FirebaseDatabase
 
 //.. For deleting movies from my movies that are saved in the PLIST
 class MyMovieDeleteVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
@@ -18,10 +18,8 @@ class MyMovieDeleteVC: UIViewController, UIPickerViewDataSource, UIPickerViewDel
     @IBOutlet var myView: UIView!
     @IBOutlet var pickerPickedLabel: UILabel!
     
-//    var dataManager : NSManagedObjectContext!
-//    //.. array to hold the database info for loading/saving
-//    var listArray = [NSManagedObject]()
-    var listArray = [(name: "", year: "", type: "", comments: "", poster: "", imdb: "")]
+//    var listArray = [(name: "", year: "", type: "", comments: "", poster: "", imdb: "")]
+    var listArray: [(name: String, year: String, type: String, imdb: String, poster: String, comments: String)] = [("","","","","","")]
     
     var myMovieChosen: String = ""
     var myMovieIMDBChosen: String = ""
@@ -32,6 +30,8 @@ class MyMovieDeleteVC: UIViewController, UIPickerViewDataSource, UIPickerViewDel
     
     var pickerTypeIndex = 0
     var pickerLabel = UILabel()
+    
+    let ref = Database.database().reference()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,12 +39,9 @@ class MyMovieDeleteVC: UIViewController, UIPickerViewDataSource, UIPickerViewDel
         // Do any additional setup after loading the view.
         myMoviePicker.dataSource = self
         myMoviePicker.delegate = self
-        
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        dataManager = appDelegate.persistentContainer.viewContext
-        
-        listArray.removeAll()
-        fetchData()
+    
+//        listArray.removeAll()
+//        fetchData()
        
         //.. for picker itself
 //        self.pickerLabel.text = (self.listArray[0].value(forKey: "name") as! String)
@@ -121,11 +118,6 @@ class MyMovieDeleteVC: UIViewController, UIPickerViewDataSource, UIPickerViewDel
         print("@@@@@@@@@ pickerTypeIndex AFTER = \(pickerTypeIndex)")
  
         if !listArray.isEmpty {
-//            self.myMovieChosen = self.listArray[self.pickerTypeIndex].value(forKey: "name") as! String
-//            self.myMovieYearChosen = self.listArray[self.pickerTypeIndex].value(forKey: "year") as! String
-//            self.myMovieTypeChosen = self.listArray[self.pickerTypeIndex].value(forKey: "type") as! String
-//            self.myMovieIMDBChosen = self.listArray[self.pickerTypeIndex].value(forKey: "imdb") as! String
-//            self.myMovieCommentsChosen = self.listArray[self.pickerTypeIndex].value(forKey: "comments") as! String
             
             self.myMovieChosen = self.listArray[self.pickerTypeIndex].name
             self.myMovieYearChosen = self.listArray[self.pickerTypeIndex].year
@@ -152,29 +144,15 @@ class MyMovieDeleteVC: UIViewController, UIPickerViewDataSource, UIPickerViewDel
                 
                 print("111122223333 === movie to delete = \(deleteName) ::: comments = \(deleteComments) ::: Imdb = \(deleteImdb)")
                 
-                //.. delete the row from the array?? Doesn't seem to really delete until you save again
-//                self.dataManager.delete(self.listArray[self.pickerTypeIndex])
+                self.ref.child(self.myMovieIMDBChosen).removeValue()
+           
+                self.listArray.removeAll()
+                self.fetchData()
+                print("******* listArray after save and after re-fetch of data ==== \(self.listArray)")
                 
-                //.. resave the data... appDelegate knows that there were changes and adjusts accordingly??
-                do {
-                    //**** Ask Bill ::: not sure why you're re-saving this ??? Doesn't the above do that already?
-                    //.. re-save to the db
-//                    try self.dataManager.save()
-                    
-                    //.. Redisplay the "newly updated" picker (since a row was deleted)
-                    //.. You seem to need to refetch because otherwise listArray isn't set right with picker
-                    //..   I get errors unwrapping nils
-                    
-                    self.listArray.removeAll()
-                    self.fetchData()
-                    print("******* listArray after save and after re-fetch of data ==== \(self.listArray)")
-                    
-                    self.pickerPickedLabel.text = ""
-                    self.myMoviePicker.reloadAllComponents()
-                    self.myView.reloadInputViews()
-                } catch {
-                    print ("Error deleting data")
-                }
+                self.pickerPickedLabel.text = ""
+                self.myMoviePicker.reloadAllComponents()
+                self.myView.reloadInputViews()
                 
             })
             
@@ -188,38 +166,47 @@ class MyMovieDeleteVC: UIViewController, UIPickerViewDataSource, UIPickerViewDel
     
     //.. read from db - get all rows
     func fetchData() {
-        
-        //.. from https://stackoverflow.com/questions/35417012/sorting-nsmanagedobject-array
-//        let fetchRequest = NSFetchRequest(entityName: CoreDataValues.EntityName)
-//        let sortDescriptor = NSSortDescriptor(key: CoreDataValues.CreationDateKey, ascending: true)
-//        fetchRequest.sortDescriptors = [sortDescriptor]
-//        do {
-        
-        //.. setup fetch from "Item" in xcdatamodeld
-//        let fetchRequest : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "MyMovieTable")
-//        
-        //.. do this if you're trying to sort it when it's coming back as part of the fetch request..
-//        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-//        fetchRequest.sortDescriptors = [sortDescriptor]
-//        
-//        do {
-//            //.. try to fetch data
-//            let result = try dataManager.fetch(fetchRequest)
-//            //.. set the array equal to the results fetched
-//            listArray = result as! [NSManagedObject]
-//            
-//            //.. just display what's in the db right now... not really needed... but helps for debugging
-//            if !listArray.isEmpty {
-//                //.. for each item in the array, do the following..
-//                for item in listArray {
-//                    let myMovieNameRetrieved = item.value(forKey: "name") as! String
-//                    print("====> myMovieNameRetrieved in listArray/CoreData: \(myMovieNameRetrieved)")
-//                }
-//            }
-//        } catch {
-//            print ("Error retrieving data")
-//        }
-        
+       listArray.removeAll()
+                
+        let rootref = Database.database().reference()
+        rootref.observeSingleEvent(of: .value) { (snapshot) in
+            
+            let myMovies = snapshot.value as! [String: AnyObject]
+            
+            let count = myMovies.count
+            var counter = 0
+            print("****** count of movies is = \(count)")
+           
+            for (k,v) in myMovies {
+                
+                counter += 1
+                print(".............................................")
+                let ximdb = k
+                print("ximdb = \(k)")
+                
+                let xname = v["name"] as! String
+                print("xname = \(xname)")
+                let xyear = v["year"] as! String
+                print("xyear = \(xyear)")
+                let xtype = v["type"] as! String
+                print("xtype = \(xtype)")
+                let xcomments = v["comments"] as! String
+                print("xcomments = \(xcomments)")
+                let xposter = v["poster"] as! String
+                print("xposter = \(xposter)")
+                
+                self.listArray.append((name: xname, year: xyear, type: xtype, imdb: ximdb, poster: xposter, comments: xcomments))
+               
+            }
+            
+            print("counter = \(counter)")
+            
+            print("listArray count = \(self.listArray.count)")
+            //self.myMoviesTableViewObj.reloadData()
+            self.myMoviePicker.reloadAllComponents()
+            
+        }
     }
+
 
 }

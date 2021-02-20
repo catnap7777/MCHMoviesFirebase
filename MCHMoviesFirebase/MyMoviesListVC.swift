@@ -167,7 +167,6 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     //.. read from db - get all data
-//    func fetchData() -> [(name: String, year: String, type: String, imdb: String, poster: String, comments: String)] {
     func fetchData() {
         
         listArray.removeAll()
