@@ -38,8 +38,7 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
        
         //..  fetchData() does NOT work here with Tab Bar Controller;
         //..    put in viewWillAppear instead
-        print("listArray count = \(listArray.count)")
-        
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -176,13 +175,13 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         let rootref = Database.database().reference()
         rootref.observeSingleEvent(of: .value) { (snapshot) in
             
-            let kam = snapshot.value as! [String: AnyObject]
+            let myMovies = snapshot.value as! [String: AnyObject]
             
-            let count = kam.count
+            let count = myMovies.count
             var counter = 0
             print("****** count of movies is = \(count)")
            
-            for (k,v) in kam {
+            for (k,v) in myMovies {
                 
                 counter += 1
                 print(".............................................")
@@ -214,21 +213,17 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
 //                    let name: String = xname
 //
 //                    listArray.append((name: xname, year: xyear, type: xtype, imdb: ximdb, poster: xposter, comments: xcomments))
-                    
-//                }
+ //                }
                
             }
             
             print("counter = \(counter)")
             
-            print("2nd listArray count = \(self.listArray.count)")
+            print("listArray count = \(self.listArray.count)")
             self.myMoviesTableViewObj.reloadData()
-            //return listArray
             
         }
-        print("3rd listArray count = \(self.listArray.count)")
-//        return listArray
-      
+        
     }
 
 
