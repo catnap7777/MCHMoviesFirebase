@@ -50,16 +50,17 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         
 //        listArray.append((name: "elsa", year: "2020", type: "game", comments: "nope", poster: "poster2", imdb: "imdb2"))
         
-        listArray = fetchData()
+//        listArray = fetchData()
+        fetchData()
         print("listArray count = \(listArray.count)")
         
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        fetchData()
-        self.myMoviesTableViewObj.reloadData()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        fetchData()
+//        self.myMoviesTableViewObj.reloadData()
+//    }
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,16 +83,9 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         cell.myMovieYear?.text = (mmRow.year)
         cell.myMovieType?.text = (mmRow.type)
         cell.myMovieComments?.text = (mmRow.comments)
-        
-//        cell.myMovieName?.text = (mmRow.value(forKey: "name") as! String)
-//        cell.myMovieYear?.text = (mmRow.value(forKey: "year") as! String)
-//        cell.myMovieType?.text = (mmRow.value(forKey: "type") as! String)
-//        cell.myMovieComments?.text = (mmRow.value(forKey: "comments") as! String)
-        
-//        print("****************** myMovieComments = \(mmRow.value(forKey: "comments") as! String)")
+  
         print("****************** myMovieComments = \(mmRow.comments)")
         
-//        let url = mmRow.value(forKey: "poster") as! String
         let url = mmRow.poster
         var myImage = UIImage(named: defaultImageArray[0])
         
@@ -124,11 +118,7 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         print("You tapped cell number \(indexPath.row).")
         
         let mmRowSelected = listArray[indexPath.row]
-        
-//        let movieNameSelected = mmRowSelected.value(forKey: "name") as! String
-//        let movieCommentsSelected = mmRowSelected.value(forKey: "comments") as! String
-//        let movieIMDBSelect = mmRowSelected.value(forKey: "imdb") as! String
-        
+  
         let movieNameSelected = mmRowSelected.name
         let movieCommentsSelected = mmRowSelected.comments
         let movieIMDBSelect = mmRowSelected.imdb
@@ -216,7 +206,8 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     //.. read from db - get all data
-    func fetchData() -> [(name: String, year: String, type: String, imdb: String, poster: String, comments: String)] {
+//    func fetchData() -> [(name: String, year: String, type: String, imdb: String, poster: String, comments: String)] {
+    func fetchData() {
         
         listArray.removeAll()
         
@@ -226,10 +217,12 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
             let kam = snapshot.value as! [String: AnyObject]
             
             let count = kam.count
+            var counter = 0
             print("****** count of movies is = \(count)")
            
             for (k,v) in kam {
                 
+                counter += 1
                 print(".............................................")
                 let ximdb = k
                 print("ximdb = \(k)")
@@ -264,13 +257,15 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
                
             }
             
+            print("counter = \(counter)")
+            
             print("2nd listArray count = \(self.listArray.count)")
             self.myMoviesTableViewObj.reloadData()
             //return listArray
             
         }
         print("3rd listArray count = \(self.listArray.count)")
-        return listArray
+//        return listArray
       
     }
 
