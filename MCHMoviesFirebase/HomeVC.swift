@@ -24,7 +24,7 @@ class HomeVC: UIViewController {
         
         let ref = Database.database().reference()
         
-        ref.child("imdb1234").setValue(["name":"test movie1","type":"movie","year":"2021","comments":"none","poster":"poster addr"])
+//        ref.child("imdb1234").setValue(["name":"test movie1","type":"movie","year":"2021","comments":"none","poster":"poster addr"])
         
 //        ref.child("test movie4").setValue(["imdb":"3333","type":"movie","year":"2021","comments":"none","poster":"poster addr"])
        

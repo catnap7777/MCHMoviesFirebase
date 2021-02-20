@@ -29,7 +29,7 @@ class MovieDetailVC: UIViewController {
     
     //.. from json search
 //    var movieArrayTup: [(xName: String, xYear: String, xType: String, xIMDB: String, xPoster: String)] = [("","","","","")]
-    var listArray: [(xName: String, xYear: String, xType: String, xIMDB: String, xPoster: String)] = [("","","","","")]
+    var listArray: [(xName: String, xYear: String, xType: String, xIMDB: String, xPoster: String, xComments: String)] = [("","","","","","")]
     
     var movieTitle = ""
     var movieYear = ""

@@ -9,6 +9,7 @@
 
 import UIKit
 import Foundation
+import FirebaseDatabase
 //import CoreData
 
 //.. For displaying the list of my movies that I have saved..
@@ -19,10 +20,16 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
 //    var dataManager : NSManagedObjectContext!
 //    //.. array to hold the database info for loading/saving
 //    var listArray = [NSManagedObject]()
-    var listArray2: [String] = ["karen","tom","erik"]
-    var listArray = [(name: "karen", year: "2021", type: "movie", comments: "yup", poster: "poster", imdb: "imdb")]
     
-    let defaultImageArray = ["posternf.png","pearl.jpg","gitcat.jpg"]
+    
+    let ref = Database.database().reference()
+    
+    var listArray: [(name: String, year: String, type: String, imdb: String, poster: String, comments: String)] = [("","","","","","")]
+    
+//    var listArray2: [String] = ["karen","tom","erik"]
+//    var listArray = [(name: "karen", year: "2021", type: "movie", comments: "yup", poster: "poster", imdb: "imdb")]
+    
+    let defaultImageArray = ["posternf.jpg","pearl.jpg","gitcat.jpg"]
    
     let cellID = "cellID"
     
@@ -41,9 +48,11 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
 //        let appDelegate = UIApplication.shared.delegate as! AppDelegate
 //        dataManager = appDelegate.persistentContainer.viewContext
         
-        listArray.append((name: "elsa", year: "2020", type: "game", comments: "nope", poster: "poster2", imdb: "imdb2"))
+//        listArray.append((name: "elsa", year: "2020", type: "game", comments: "nope", poster: "poster2", imdb: "imdb2"))
         
-        fetchData()
+        listArray = fetchData()
+        print("listArray count = \(listArray.count)")
+        
         
     }
     
@@ -207,39 +216,62 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     //.. read from db - get all data
-    func fetchData() {
+    func fetchData() -> [(name: String, year: String, type: String, imdb: String, poster: String, comments: String)] {
         
-        //.. from https://stackoverflow.com/questions/35417012/sorting-nsmanagedobject-array
-//        let fetchRequest = NSFetchRequest(entityName: CoreDataValues.EntityName)
-//        let sortDescriptor = NSSortDescriptor(key: CoreDataValues.CreationDateKey, ascending: true)
-//        fetchRequest.sortDescriptors = [sortDescriptor]
-//        do {
+        listArray.removeAll()
         
-        //.. setup fetch from "Item" in xcdatamodeld
-//        let fetchRequest : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "MyMovieTable")
+        let rootref = Database.database().reference()
+        rootref.observeSingleEvent(of: .value) { (snapshot) in
+            
+            let kam = snapshot.value as! [String: AnyObject]
+            
+            let count = kam.count
+            print("****** count of movies is = \(count)")
+           
+            for (k,v) in kam {
+                
+                print(".............................................")
+                let ximdb = k
+                print("ximdb = \(k)")
+                
+                let xname = v["name"] as! String
+                print("xname = \(xname)")
+                let xyear = v["year"] as! String
+                print("xyear = \(xyear)")
+                let xtype = v["type"] as! String
+                print("xtype = \(xtype)")
+                let xcomments = v["comments"] as! String
+                print("xcomments = \(xcomments)")
+                let xposter = v["poster"] as! String
+                print("xposter = \(xposter)")
+                
+                self.listArray.append((name: xname, year: xyear, type: xtype, imdb: ximdb, poster: xposter, comments: xcomments))
+                
+//                for child in snapshot.children {
+//                    let childSnapshot = child as! DataSnapshot
+//                    print("childSnapshot = \(childSnapshot)")
+//                    let xname = childSnapshot.childSnapshot(forPath: "name")
+//                    print("name from childSnapshot = \(xname)")
+//                    let xtype = childSnapshot.childSnapshot(forPath: "type")
+//                    let xyear = childSnapshot.childSnapshot(forPath: "year")
+//                    let xcomments = childSnapshot.childSnapshot(forPath: "comments")
+//                    let xposter = childSnapshot.childSnapshot(forPath: "poster")
+//                    let name: String = xname
 //
-//        //.. do this if you're trying to sort it when it's coming back as part of the fetch request..
-//        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-//        fetchRequest.sortDescriptors = [sortDescriptor]
-//
-//        do {
-//            //.. try to fetch data
-//            let result = try dataManager.fetch(fetchRequest)
-//            //.. set the array equal to the results fetched
-//            listArray = result as! [NSManagedObject]
-//
-//            //.. just display what's in the db right now... not really needed... but helps for debugging
-//            if !listArray.isEmpty {
-//                //.. for each item in the array, do the following..
-//                for item in listArray {
-//                    let myMovieNameRetrieved = item.value(forKey: "name") as! String
-//                    print("====> myMovieNameRetrieved in listArray/CoreData: \(myMovieNameRetrieved)")
+//                    listArray.append((name: xname, year: xyear, type: xtype, imdb: ximdb, poster: xposter, comments: xcomments))
+                    
 //                }
-//            }
-//        } catch {
-//            print ("Error retrieving data")
-//        }
-//
+               
+            }
+            
+            print("2nd listArray count = \(self.listArray.count)")
+            self.myMoviesTableViewObj.reloadData()
+            //return listArray
+            
+        }
+        print("3rd listArray count = \(self.listArray.count)")
+        return listArray
+      
     }
 
 

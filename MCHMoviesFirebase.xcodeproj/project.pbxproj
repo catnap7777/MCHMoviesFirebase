@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A46869C25E0A39300481518 /* posternf.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A46869B25E0A39300481518 /* posternf.png */; };
 		3A90E85F25DF46A8006E2E33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A90E85E25DF46A8006E2E33 /* AppDelegate.swift */; };
 		3A90E86125DF46A8006E2E33 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A90E86025DF46A8006E2E33 /* SceneDelegate.swift */; };
 		3A90E86625DF46A8006E2E33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A90E86425DF46A8006E2E33 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		14F283485506EDC58504FEE4 /* Pods_MCHMoviesFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCHMoviesFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A46869B25E0A39300481518 /* posternf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = posternf.png; sourceTree = SOURCE_ROOT; };
 		3A90E85B25DF46A8006E2E33 /* MCHMoviesFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCHMoviesFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A90E85E25DF46A8006E2E33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A90E86025DF46A8006E2E33 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				3A90E87725DF48D2006E2E33 /* popcorn2_wo_middle3.jpg */,
 				3A90E87825DF48D2006E2E33 /* popcorn2_wo_middle5.jpg */,
 				3A90E87525DF48D2006E2E33 /* popcornpic1sm2.png */,
+				3A46869B25E0A39300481518 /* posternf.png */,
 				3A90E87C25DF48D3006E2E33 /* posternf.jpg */,
 				3A90E87925DF48D2006E2E33 /* posternotfound.JPG */,
 				3A90E87B25DF48D2006E2E33 /* tygermatrix303.png */,
@@ -211,6 +214,7 @@
 				3A90E87325DF47C0006E2E33 /* GoogleService-Info.plist in Resources */,
 				3A90E87E25DF48D3006E2E33 /* popcornpic1sm2.png in Resources */,
 				3A90E86825DF46A9006E2E33 /* Assets.xcassets in Resources */,
+				3A46869C25E0A39300481518 /* posternf.png in Resources */,
 				3A90E88225DF48D3006E2E33 /* posternotfound.JPG in Resources */,
 				3A90E88425DF48D3006E2E33 /* tygermatrix303.png in Resources */,
 				3A90E87F25DF48D3006E2E33 /* gitcat.jpg in Resources */,
