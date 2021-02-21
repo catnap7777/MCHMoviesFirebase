@@ -67,7 +67,7 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         cell.myMovieType?.text = (mmRow.type)
         cell.myMovieComments?.text = (mmRow.comments)
   
-        print("****************** myMovieComments = \(mmRow.comments)")
+//        print("****************** myMovieComments = \(mmRow.comments)")
         
         let url = mmRow.poster
         var myImage = UIImage(named: defaultImageArray[0])
@@ -127,21 +127,21 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
                //.. called savedText, which represents the first text field (note the index value of 0) on the alert controller. If you add more than one text field to an alert controller, you’ll need to define additional constants to represent those other text fields
 
         let savedText: String = alert.textFields![0].text ?? "nice try karen"
-        print("savedText = \(savedText)")
+//        print("savedText = \(savedText)")
         let savedText2: NSString = savedText as NSString
-        print("savedText2 = \(savedText2)")
+//        print("savedText2 = \(savedText2)")
         
         //.. try to update the listArray and then save it
         self.listArray[indexPath.row].comments = savedText
-        print("listArray comments = \(self.listArray[indexPath.row].comments)")
+//        print("listArray comments = \(self.listArray[indexPath.row].comments)")
         
         //.. Now save the new comments
         self.ref.child("\(movieIMDBSelect)/comments").setValue("\(savedText)")
         self.myMoviesTableViewObj.reloadData()
         
-        print("$$$$$$ updatedRow name = \(String(describing: self.listArray[indexPath.row].name)))")
-        print("$$$$$$ updatedRow imdb = \(String(describing: self.listArray[indexPath.row].imdb)))")
-        print("$$$$$$ updatedRow comments = \(String(describing: self.listArray[indexPath.row].comments)))")
+//        print("$$$$$$ updatedRow name = \(String(describing: self.listArray[indexPath.row].name)))")
+//        print("$$$$$$ updatedRow imdb = \(String(describing: self.listArray[indexPath.row].imdb)))")
+//        print("$$$$$$ updatedRow comments = \(String(describing: self.listArray[indexPath.row].comments)))")
         
        })
 
@@ -183,20 +183,20 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
             for (k,v) in myMovies {
                 
                 counter += 1
-                print(".............................................")
+//                print(".............................................")
                 let ximdb = k
-                print("ximdb = \(k)")
+//                print("ximdb = \(k)")
                 
                 let xname = v["name"] as! String
-                print("xname = \(xname)")
+//                print("xname = \(xname)")
                 let xyear = v["year"] as! String
-                print("xyear = \(xyear)")
+//                print("xyear = \(xyear)")
                 let xtype = v["type"] as! String
-                print("xtype = \(xtype)")
+//                print("xtype = \(xtype)")
                 let xcomments = v["comments"] as! String
-                print("xcomments = \(xcomments)")
+//                print("xcomments = \(xcomments)")
                 let xposter = v["poster"] as! String
-                print("xposter = \(xposter)")
+//                print("xposter = \(xposter)")
                 
                 self.listArray.append((name: xname, year: xyear, type: xtype, imdb: ximdb, poster: xposter, comments: xcomments))
                 
@@ -224,9 +224,8 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
             
             self.listArray.sort { $0.0 != $1.0 ? $0.0 < $1.0 : $0.1 > $1.1 }
             
-            print("counter = \(counter)")
-            
-            print("listArray count = \(self.listArray.count)")
+//            print("counter = \(counter)")
+//            print("listArray count = \(self.listArray.count)")
             self.myMoviesTableViewObj.reloadData()
             
         }

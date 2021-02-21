@@ -68,7 +68,7 @@ class MyMovieDeleteVC: UIViewController, UIPickerViewDataSource, UIPickerViewDel
         //.. for line items on the actual picker
         pickerLabel.text = (self.listArray[row].year) + "/" + (self.listArray[row].type) + " - " + (self.listArray[row].name)
         
-        print("pickerlabel \(String(describing: pickerLabel.text)) - \(self.listArray[row].name)")
+//        print("pickerlabel \(String(describing: pickerLabel.text)) - \(self.listArray[row].name)")
         
         //.. for the label that shows the full description of what the picker
         //..    is currently positioned on
@@ -99,7 +99,7 @@ class MyMovieDeleteVC: UIViewController, UIPickerViewDataSource, UIPickerViewDel
 
     @IBAction func deleteMyMoviePressed(_ sender: Any) {
         
-        print("@@@@@@@@@ pickerTypeIndex BEFORE delete = \(pickerTypeIndex)")
+//        print("@@@@@@@@@ pickerTypeIndex BEFORE delete = \(pickerTypeIndex)")
  
         if !listArray.isEmpty {
             
@@ -119,14 +119,14 @@ class MyMovieDeleteVC: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             
             let okAction = UIAlertAction(title: "Delete", style: .default, handler: { action -> Void in
                 
-                print("movie to delete = \(self.myMovieChosen)  \(self.myMovieIMDBChosen)  \(self.myMovieCommentsChosen)")
+//                print("movie to delete = \(self.myMovieChosen)  \(self.myMovieIMDBChosen)  \(self.myMovieCommentsChosen)")
                 
                 //.. set the String of what you want to delete
                 let deleteName = self.myMovieChosen
                 let deleteComments = self.myMovieCommentsChosen
                 let deleteImdb: NSString = self.myMovieIMDBChosen as NSString
                 
-                print("111122223333 === movie to delete = \(deleteName) ::: comments = \(deleteComments) ::: Imdb = \(deleteImdb)")
+//                print("111122223333 === movie to delete = \(deleteName) ::: comments = \(deleteComments) ::: Imdb = \(deleteImdb)")
                 
                 self.ref.child(self.myMovieIMDBChosen).removeValue()
            
@@ -137,7 +137,7 @@ class MyMovieDeleteVC: UIViewController, UIPickerViewDataSource, UIPickerViewDel
                 //.. reset pickerTypeIndex here because picker is redrawn after delete
                 //..   and should be at 0 entry
                 self.pickerTypeIndex = 0
-                print("@@@@@@@@@ pickerTypeIndex AFTER delete = \(self.pickerTypeIndex)")
+//                print("@@@@@@@@@ pickerTypeIndex AFTER delete = \(self.pickerTypeIndex)")
                 
                 self.pickerPickedLabel.text = ""
                 self.myMoviePicker.reloadAllComponents()
@@ -169,20 +169,20 @@ class MyMovieDeleteVC: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             for (k,v) in myMovies {
                 
                 counter += 1
-                print(".............................................")
+//                print(".............................................")
                 let ximdb = k
-                print("ximdb = \(k)")
+//                print("ximdb = \(k)")
                 
                 let xname = v["name"] as! String
-                print("xname = \(xname)")
+//                print("xname = \(xname)")
                 let xyear = v["year"] as! String
-                print("xyear = \(xyear)")
+//                print("xyear = \(xyear)")
                 let xtype = v["type"] as! String
-                print("xtype = \(xtype)")
+//                print("xtype = \(xtype)")
                 let xcomments = v["comments"] as! String
-                print("xcomments = \(xcomments)")
+//                print("xcomments = \(xcomments)")
                 let xposter = v["poster"] as! String
-                print("xposter = \(xposter)")
+//                print("xposter = \(xposter)")
                 
                 self.listArray.append((name: xname, year: xyear, type: xtype, imdb: ximdb, poster: xposter, comments: xcomments))
                
@@ -196,10 +196,9 @@ class MyMovieDeleteVC: UIViewController, UIPickerViewDataSource, UIPickerViewDel
                         
             self.listArray.sort { $0.0 != $1.0 ? $0.0 < $1.0 : $0.1 > $1.1 }
             
-            print("counter = \(counter)")
+//            print("counter = \(counter)")
             
-            print("listArray count = \(self.listArray.count)")
-            //self.myMoviesTableViewObj.reloadData()
+//            print("listArray count = \(self.listArray.count)")
             self.myMoviePicker.reloadAllComponents()
             
         }
