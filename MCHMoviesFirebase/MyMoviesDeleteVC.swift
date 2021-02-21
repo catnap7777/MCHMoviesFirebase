@@ -18,7 +18,6 @@ class MyMovieDeleteVC: UIViewController, UIPickerViewDataSource, UIPickerViewDel
     @IBOutlet var myView: UIView!
     @IBOutlet var pickerPickedLabel: UILabel!
     
-//    var listArray = [(name: "", year: "", type: "", comments: "", poster: "", imdb: "")]
     var listArray: [(name: String, year: String, type: String, imdb: String, poster: String, comments: String)] = [("","","","","","")]
     
     var myMovieChosen: String = ""
@@ -40,9 +39,6 @@ class MyMovieDeleteVC: UIViewController, UIPickerViewDataSource, UIPickerViewDel
         myMoviePicker.dataSource = self
         myMoviePicker.delegate = self
     
-//        listArray.removeAll()
-//        fetchData()
-       
         //.. for picker itself
 //        self.pickerLabel.text = (self.listArray[0].value(forKey: "name") as! String)
 //
@@ -69,17 +65,14 @@ class MyMovieDeleteVC: UIViewController, UIPickerViewDataSource, UIPickerViewDel
         
         pickerLabel = UILabel()
     
-        //.. in the picker itself
-//        pickerLabel.text = (self.listArray[row].value(forKey: "year") as! String) + "/" + (self.listArray[row].value(forKey: "type") as! String) + " - " + (self.listArray[row].value(forKey: "name") as! String)
-        
+        //.. for line items on the actual picker
         pickerLabel.text = (self.listArray[row].year) + "/" + (self.listArray[row].type) + " - " + (self.listArray[row].name)
         
-        
-        //pickerLabel.text = mymovies[row].name
-       
-//        print("pickerlabel \(String(describing: pickerLabel.text)) - \((self.listArray[row].value(forKey: "name") as? String) ?? "again - what is happening")")
-        
         print("pickerlabel \(String(describing: pickerLabel.text)) - \(self.listArray[row].name)")
+        
+        //.. for the label that shows the full description of what the picker
+        //..    is currently positioned on
+        pickerPickedLabel.text = (self.listArray[row].year + "/" + self.listArray[row].type + " - " + self.listArray[row].name)
 
         if UIDevice.current.userInterfaceIdiom == .pad {
             pickerLabel.font = UIFont.systemFont(ofSize: 14)
@@ -98,8 +91,6 @@ class MyMovieDeleteVC: UIViewController, UIPickerViewDataSource, UIPickerViewDel
         pickerTypeIndex = myMoviePicker.selectedRow(inComponent: 0)
         
         if !listArray.isEmpty {
-            //.. info that goes in the label for the row that's picked
-//            pickerPickedLabel.text = (self.listArray[row].value(forKey: "year") as! String) + "/" + (self.listArray[row].value(forKey: "type") as! String) + " - " + (self.listArray[row].value(forKey: "name") as! String)
             
             pickerPickedLabel.text = (self.listArray[row].year + "/" + self.listArray[row].type + " - " + self.listArray[row].name)
         }
@@ -108,14 +99,7 @@ class MyMovieDeleteVC: UIViewController, UIPickerViewDataSource, UIPickerViewDel
 
     @IBAction func deleteMyMoviePressed(_ sender: Any) {
         
-        //********* THIS NEEDS TO BE HERE TO GET CORRECT ALERT MSG
-        //.. LEAVE the print statements for debugging
-        //.. set the values for the picker row chosen so they can be displayed in the alert
-        print("@@@@@@@@@ pickerTypeIndex BEFORE = \(pickerTypeIndex)")
-        //** MUST reset pickerTypeIndex or you'll get an error when deleting 2nd to last row and then...
-        //    trying to delete the last row -> index out of bounds
-        pickerTypeIndex = myMoviePicker.selectedRow(inComponent: 0)
-        print("@@@@@@@@@ pickerTypeIndex AFTER = \(pickerTypeIndex)")
+        print("@@@@@@@@@ pickerTypeIndex BEFORE delete = \(pickerTypeIndex)")
  
         if !listArray.isEmpty {
             
@@ -148,7 +132,12 @@ class MyMovieDeleteVC: UIViewController, UIPickerViewDataSource, UIPickerViewDel
            
                 self.listArray.removeAll()
                 self.fetchData()
-                print("******* listArray after save and after re-fetch of data ==== \(self.listArray)")
+//                print("******* listArray after save and after re-fetch of data ==== \(self.listArray)")
+                
+                //.. reset pickerTypeIndex here because picker is redrawn after delete
+                //..   and should be at 0 entry
+                self.pickerTypeIndex = 0
+                print("@@@@@@@@@ pickerTypeIndex AFTER delete = \(self.pickerTypeIndex)")
                 
                 self.pickerPickedLabel.text = ""
                 self.myMoviePicker.reloadAllComponents()
@@ -198,6 +187,14 @@ class MyMovieDeleteVC: UIViewController, UIPickerViewDataSource, UIPickerViewDel
                 self.listArray.append((name: xname, year: xyear, type: xtype, imdb: ximdb, poster: xposter, comments: xcomments))
                
             }
+            
+            //.. Sort the my movies...
+                        //.. 'sorted' creates a new array, 'sort' sorts the array in place
+                        //.. if the movie names aren't equal, sort on the names asc... if they are equal, sort on the year desc
+                        //.. Note: used listArray.sorted previously. Now using ListArraty.sort
+            //            let movieArrayTupSorted = self.listArray.sorted { $0.0 != $1.0 ? $0.0 < $1.0 : $0.1 > $1.1 }
+                        
+            self.listArray.sort { $0.0 != $1.0 ? $0.0 < $1.0 : $0.1 > $1.1 }
             
             print("counter = \(counter)")
             

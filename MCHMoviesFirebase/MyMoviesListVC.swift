@@ -216,6 +216,14 @@ class MyMovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
                
             }
             
+            //.. Sort the my movies...
+            //.. 'sorted' creates a new array, 'sort' sorts the array in place
+            //.. if the movie names aren't equal, sort on the names asc... if they are equal, sort on the year desc
+            //.. Note: used listArray.sorted previously. Now using ListArraty.sort
+//            let movieArrayTupSorted = self.listArray.sorted { $0.0 != $1.0 ? $0.0 < $1.0 : $0.1 > $1.1 }
+            
+            self.listArray.sort { $0.0 != $1.0 ? $0.0 < $1.0 : $0.1 > $1.1 }
+            
             print("counter = \(counter)")
             
             print("listArray count = \(self.listArray.count)")
