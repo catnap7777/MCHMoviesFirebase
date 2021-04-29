@@ -73,9 +73,9 @@ class MovieListVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
                
                 myImage = UIImage(data: imageData)
                 //print(myImage)
-                DispatchQueue.main.async {
-                    return myImage
-                }
+//                DispatchQueue.main.async {
+//                    return myImage
+//                }
             } else {
                 //myImage = UIImage(named: defaultImageArray[0])
                 myImage = UIImage(named: "posternotfound.JPG")
